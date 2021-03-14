@@ -28,18 +28,19 @@ bodyContainer.addEventListener('click', function (event) {
         bodyContainer.style.backgroundColor = 'white'
         event.stopImmediatePropagation
     }
-    
+    // competing event propagation stopped above.
+    navBar.style.color = 'green';
 })
 
-// #4 on Key stroke "B" the text becomes Bold and Blue
+// #4 on Key stroke "B" the text becomes Blue
 
 bodyContainer.addEventListener('keydown', function (event) {
     if ((event.key === 'b' || event.key === 'B') && bodyContainer.style.color !== 'blue') {
-        bodyContainer.style.fontWeight = 'bold';
+        // bodyContainer.style.fontWeight = 'bold';
         bodyContainer.style.color = 'blue';
     }
     else if ((event.key === 'b' || event.key === 'B') && bodyContainer.style.color === 'blue') {
-        bodyContainer.style.fontWeight = '';
+        // bodyContainer.style.fontWeight = '';
         bodyContainer.style.color = 'black';
     }
 })
@@ -95,7 +96,23 @@ paraGroup.forEach(function (element) {
     })
 })
 
+// #10 resize
 
+let subHeadGroup = document.querySelectorAll('h2');
+window.addEventListener('resize', function () {
+    subHeadGroup.forEach(function (element) {
+    
+        if (element.style.fontWeight == 'bold') {
+            element.style.fontWeight = 'bolder';
+        }
+        else if (element.style.fontWeight == 'bolder') {
+            element.style.fontWeight = 'initial';
+        }
+        else {
+            element.style.fontWeight = 'bold';
+        }
+    })
+})
 
 
 // prevent default on links
