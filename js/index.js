@@ -20,12 +20,12 @@ let bodyContainer = document.querySelector('body');
 bodyContainer.addEventListener('click', function (event) {
     if (heading.style.background == 'white') {
         heading.style.background = "lightblue";
-        
+        bodyContainer.style.backgroundColor = 'tan'
         event.stopImmediatePropagation
     }
     else {
         heading.style.background = 'white'
-        
+        bodyContainer.style.backgroundColor = 'white'
         event.stopImmediatePropagation
     }
     
@@ -81,6 +81,21 @@ window.onscroll = function() {
     }
      
 }
+
+//9 double click
+
+let paraGroup = document.querySelectorAll('p');
+paraGroup.forEach(function (element) {
+    element.style.transition = '3s ease-in-out'
+    element.addEventListener('dblclick', function (event) {
+        event.target.style.color = bodyContainer.style.backgroundColor;
+        setTimeout(function () {
+            event.target.style.color = 'black'
+        }, 5000)
+    })
+})
+
+
 
 
 // prevent default on links
