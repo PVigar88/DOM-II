@@ -1,27 +1,37 @@
 // Your code goes here
 // document.addEventListener('click', () => console.log(event.target));
-// #1 
+// #1 & 2 nav focus and nav Blur
 
+let navBar = document.querySelectorAll('.nav-link')
 
+navBar.forEach(function (element) {
+    element.addEventListener('focus', function (event) {
+        event.target.style.fontSize = '5em';
+    })
+    element.addEventListener('blur', function (event) {
+        event.target.style.fontSize = '';
+    })
 
-// #2 on click toggles header background between white and blue and the body tan.
+})
+
+// #3 on click toggles header background between white and blue and the body tan.
 let heading = document.querySelector('header');
 let bodyContainer = document.querySelector('body');
 bodyContainer.addEventListener('click', function (event) {
     if (heading.style.background == 'white') {
         heading.style.background = "lightblue";
-        bodyContainer.style.backgroundColor = 'tan';
+        
         event.stopImmediatePropagation
     }
     else {
         heading.style.background = 'white'
-        bodyContainer.style.backgroundColor = 'white';
+        
         event.stopImmediatePropagation
     }
     
 })
 
-// #3 on Key stroke "B" the text becomes Bold and Blue
+// #4 on Key stroke "B" the text becomes Bold and Blue
 
 bodyContainer.addEventListener('keydown', function (event) {
     if ((event.key === 'b' || event.key === 'B') && bodyContainer.style.color !== 'blue') {
@@ -33,11 +43,6 @@ bodyContainer.addEventListener('keydown', function (event) {
         bodyContainer.style.color = 'black';
     }
 })
-
-//#4 wheel
-
-
-
 
 //#5 load
 let imgGroup = document.querySelectorAll('img');
@@ -57,3 +62,33 @@ imgGroup.forEach(function (element) {
     })
 }
 )
+
+//8 Scroll
+
+let mainheader = document.querySelector('.logo-heading')
+
+window.onscroll = function() {
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        mainheader.style.fontSize = '8em'
+       
+    }
+    else if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30){
+        mainheader.style.fontSize = '6.5em'
+    }
+    else {
+        mainheader.style.fontSize = '5em';
+        
+    }
+     
+}
+
+
+// prevent default on links
+navBar.forEach(function (element) {
+    element.addEventListener('click', function (event) {
+        event.preventDefault;
+    })
+
+
+})
+
